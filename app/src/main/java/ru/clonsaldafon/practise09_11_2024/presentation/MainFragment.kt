@@ -23,12 +23,9 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             adapter = this@MainFragment.adapter
         }
 
-        adapter.submitList(
-            listOf(
-                Intercom(1, "Beward"),
-                Intercom(2, "Sokol")
-            )
-        )
+        viewModel.intercoms.observe(viewLifecycleOwner) { intercoms ->
+            adapter.submitList(intercoms)
+        }
 
         super.onViewCreated(view, savedInstanceState)
     }
