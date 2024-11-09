@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import ru.clonsaldafon.practise09_11_2024.data.IntercomsRepository
+import ru.clonsaldafon.practise09_11_2024.data.model.Intercom
 import javax.inject.Inject
 
 class MainViewModel @Inject constructor(
@@ -30,6 +31,12 @@ class MainViewModel @Inject constructor(
     fun openIntercom(intercom: Intercom) {
         viewModelScope.launch {
             repository.openIntercom(intercom)
+        }
+    }
+
+    fun callIntercom(intercom: Intercom) {
+        viewModelScope.launch {
+            repository.callIntercom(intercom)
         }
     }
 

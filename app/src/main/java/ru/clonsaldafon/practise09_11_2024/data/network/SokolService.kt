@@ -11,4 +11,7 @@ interface SokolService {
     @PUT("sip/test/analog/1")
     suspend fun makeCall(): Response<Unit>
 
+    @PUT("camera/snapshot")
+    suspend fun snapshotIntercom(): Response<Unit>
+
 }

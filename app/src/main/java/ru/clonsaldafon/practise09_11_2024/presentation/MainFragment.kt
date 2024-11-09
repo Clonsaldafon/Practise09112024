@@ -8,6 +8,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import ru.clonsaldafon.practise09_11_2024.R
+import ru.clonsaldafon.practise09_11_2024.data.model.Intercom
 import ru.clonsaldafon.practise09_11_2024.databinding.FragmentMainBinding
 import ru.clonsaldafon.practise09_11_2024.di.ViewModelFactory
 import ru.clonsaldafon.practise09_11_2024.di.appComponent
@@ -23,7 +24,8 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     private val viewModel: MainViewModel by viewModels { factory }
 
     private val adapter = IntercomsAdapter(
-        onOpenClick = ::openIntercom
+        onOpenClick = ::openIntercom,
+        onCallClick = ::callIntercom
     )
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -32,8 +34,8 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             adapter = this@MainFragment.adapter
         }
 
-        viewModel.intercoms.observe(viewLifecycleOwner) { intercoms ->
-            adapter.submitList(intercoms)
+        viewModel.intercoms.observe(viewLifecycleOwner) {
+            adapter.submitList(it)
         }
 
         super.onViewCreated(view, savedInstanceState)
@@ -41,6 +43,10 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
     fun openIntercom(intercom: Intercom) {
         viewModel.openIntercom(intercom)
+    }
+
+    fun callIntercom(intercom: Intercom) {
+        viewModel.callIntercom(intercom)
     }
 
     override fun onAttach(context: Context) {
