@@ -7,14 +7,20 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import ru.clonsaldafon.practise09_11_2024.databinding.IntercomViewholderBinding
 
-class IntercomsAdapter : ListAdapter<Intercom, IntercomsAdapter.IntercomViewHolder>(IntercomDiffUtil()) {
+class IntercomsAdapter(
+    private val onOpenClick: (Intercom) -> Unit
+) : ListAdapter<Intercom, IntercomsAdapter.IntercomViewHolder>(IntercomDiffUtil()) {
 
     class IntercomViewHolder(
+        private val onOpenClick: (Intercom) -> Unit,
         private val binding: IntercomViewholderBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(intercom: Intercom) = with(binding) {
             intercomName.text = intercom.name
+            intercomOpen.setOnClickListener {
+                onOpenClick(intercom)
+            }
         }
 
     }
@@ -33,7 +39,7 @@ class IntercomsAdapter : ListAdapter<Intercom, IntercomsAdapter.IntercomViewHold
         val context = parent.context
         val inflater = LayoutInflater.from(context)
         val binding = IntercomViewholderBinding.inflate(inflater, parent, false)
-        return IntercomViewHolder(binding)
+        return IntercomViewHolder(onOpenClick, binding)
     }
 
     override fun onBindViewHolder(holder: IntercomViewHolder, position: Int) {

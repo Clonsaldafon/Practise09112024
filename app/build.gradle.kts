@@ -61,4 +61,9 @@ dependencies {
     // Dagger 2 DI
     implementation("com.google.dagger:dagger:2.52")
     kapt("com.google.dagger:dagger-compiler:2.52")
+
+    // Retrofit Networking
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
 }

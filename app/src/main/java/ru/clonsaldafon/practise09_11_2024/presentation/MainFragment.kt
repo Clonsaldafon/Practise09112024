@@ -22,7 +22,9 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
     private val viewModel: MainViewModel by viewModels { factory }
 
-    private val adapter = IntercomsAdapter()
+    private val adapter = IntercomsAdapter(
+        onOpenClick = ::openIntercom
+    )
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         with(binding.intercomsRecycler) {
@@ -35,6 +37,10 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         }
 
         super.onViewCreated(view, savedInstanceState)
+    }
+
+    fun openIntercom(intercom: Intercom) {
+        viewModel.openIntercom(intercom)
     }
 
     override fun onAttach(context: Context) {
