@@ -3,6 +3,7 @@ package ru.clonsaldafon.practise09_11_2024.data
 import kotlinx.coroutines.delay
 import ru.clonsaldafon.practise09_11_2024.data.model.Intercom
 import ru.clonsaldafon.practise09_11_2024.data.model.IntercomType
+import ru.clonsaldafon.practise09_11_2024.data.network.BewardService
 import ru.clonsaldafon.practise09_11_2024.data.network.SokolService
 import javax.inject.Inject
 import kotlin.random.Random
@@ -17,7 +18,8 @@ interface IntercomsRepository {
 }
 
 class IntercomsRepositoryImpl @Inject constructor(
-    private val sokolService: SokolService
+    private val sokolService: SokolService,
+    private val bewardService: BewardService
 ) : IntercomsRepository {
     override suspend fun loadIntercoms(): List<Intercom> {
         delay(Random.nextLong(1000, 5000))
@@ -40,7 +42,7 @@ class IntercomsRepositoryImpl @Inject constructor(
     override suspend fun openIntercom(intercom: Intercom) {
         when(intercom.type) {
             IntercomType.SOKOL -> sokolService.openIntercom()
-            IntercomType.BEWARD -> TODO()
+            IntercomType.BEWARD -> bewardService.openIntercom()
         }
     }
 
