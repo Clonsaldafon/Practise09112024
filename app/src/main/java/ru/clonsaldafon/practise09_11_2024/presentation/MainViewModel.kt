@@ -3,8 +3,9 @@ package ru.clonsaldafon.practise09_11_2024.presentation
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import javax.inject.Inject
 
-class MainViewModel : ViewModel() {
+class MainViewModel @Inject constructor(): ViewModel() {
 
     private val _intercoms = MutableLiveData<List<Intercom>>()
     val intercoms: LiveData<List<Intercom>>

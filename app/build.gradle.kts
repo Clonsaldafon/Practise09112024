@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("kotlin-kapt")
 }
 
 android {
@@ -56,4 +57,8 @@ dependencies {
 
     // VBPD
     implementation("com.github.kirich1409:viewbindingpropertydelegate-full:1.5.9")
+
+    // Dagger 2 DI
+    implementation("com.google.dagger:dagger:2.52")
+    kapt("com.google.dagger:dagger-compiler:2.52")
 }
