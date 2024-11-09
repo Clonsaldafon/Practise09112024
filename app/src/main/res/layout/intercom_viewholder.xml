@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ImageView
+        android:id="@+id/intercom_snapshot"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        tools:src="@drawable/ic_launcher_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/intercom_open" />
+
+    <TextView
+        android:id="@+id/intercom_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Sokol"
+        android:textSize="32sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/intercom_snapshot" />
+
+    <Button
+        android:id="@+id/intercom_open"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Open"
+        app:layout_constraintStart_toEndOf="@id/intercom_name"
+        app:layout_constraintTop_toBottomOf="@id/intercom_snapshot"
+        app:layout_constraintEnd_toStartOf="@id/intercom_call" />
+
+    <Button
+        android:id="@+id/intercom_call"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Call"
+        app:layout_constraintStart_toEndOf="@id/intercom_open"
+        app:layout_constraintTop_toBottomOf="@id/intercom_snapshot"
+        app:layout_constraintEnd_toStartOf="@id/intercom_decline" />
+
+    <Button
+        android:id="@+id/intercom_decline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Decline"
+        app:layout_constraintStart_toEndOf="@id/intercom_call"
+        app:layout_constraintTop_toBottomOf="@id/intercom_snapshot"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

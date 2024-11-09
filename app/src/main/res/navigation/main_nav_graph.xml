@@ -6,6 +6,6 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="ru.clonsaldafon.practise09_11_2024.MainFragment"
+        android:name="ru.clonsaldafon.practise09_11_2024.presentation.MainFragment"
         android:label="MainFragment" />
 </navigation>
