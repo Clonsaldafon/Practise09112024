@@ -23,6 +23,13 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             adapter = this@MainFragment.adapter
         }
 
+        adapter.submitList(
+            listOf(
+                Intercom(1, "Beward"),
+                Intercom(2, "Sokol")
+            )
+        )
+
         super.onViewCreated(view, savedInstanceState)
     }
 
